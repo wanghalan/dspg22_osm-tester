@@ -71,7 +71,7 @@ This returns something like the following into ```vw.csv```
 28      Parkersburg  (39.2699565, -81.5506916)  West Virginia
 ```
 
-Now, use the osm-tester.py to generate pairs of coordinates that return a csv with responses from the osrm official website. For example, we can take the generated ```vw.csv``` and get a response csv with 10 results using
+Now, use the osm-tester.py to generate random pairs of coordinates that return a csv with responses from the osrm official website. For example, we can take the generated ```vw.csv``` and get a response csv with 10 results using
 ```python
 python osm-tester.py -i vw.csv -n 10 -o 10_vw_responses.csv
 ```
