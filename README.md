@@ -92,6 +92,6 @@ Which should return something like
 
 As for how to merge the osm files, well... I've put together a [gist](https://gist.github.com/yaoeh/859cefaea7b61046d084ead1b3d104a1)! glhf
 
-Credit
+Acknowledgement
 ---
 This project was built as part of the 2022 [Data Science for the Public Good (DSPG) internship program](https://biocomplexity.virginia.edu/data-science-public-good-internship-program)
