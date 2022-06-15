@@ -1,5 +1,5 @@
 # dspg22_osm-tester
-If you are trying to merge osm data, how do you know that the merged files are working successfully? Don't worry, this repository might save you some work
+If you are trying to merge [Open Street Map (OSM)](https://www.openstreetmap.org/#map=5/38.007/-95.844) data, how do you know that the merged files are working successfully? Don't worry, this repository might save you some work
 
 Usage
 ---
