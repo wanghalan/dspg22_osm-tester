@@ -53,10 +53,12 @@ if __name__ == '__main__':
     responses = []
     start = []
     end = []
+    queries = []
     for coor in tqdm(pairs):
         logging.debug(coor)
         query = oracle.format(coor[0], coor[1])
         logging.debug(query)
+        queries.append(query)
         r = requests.get(query)
         start.append(coor[0])
         end.append(coor[1])
@@ -68,5 +70,15 @@ if __name__ == '__main__':
     pair_df['start'] = start
     pair_df['end'] = end
     pair_df['response'] = responses
+    pair_df['query'] = query
+
+    # Append the city names to the start and end csvs
+    pair_df['start_name'] = pair_df['start'].apply(
+        lambda x: df[df['coor'] == x]['name'].values[0])
+    pair_df['end_name'] = pair_df['end'].apply(
+        lambda x: df[df['coor'] == x]['name'].values[0])
+
+    # Reordering the data frame
+    pair_df = pair_df[['start_name', 'start', 'end_name', 'end', 'query', 'response']]
     pair_df.to_csv(args.output, index=False)
     logging.debug(pair_df)
