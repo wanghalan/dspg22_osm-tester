@@ -61,7 +61,7 @@ Which should return something like
 9  37.7781702,-81.1881557  38.3505995,-81.6332812  {"code":"Ok","routes":[{"geometry":"bqc~L_lxzK...
 ```
 
-Finally, to run the tests to check against the server responses:
+Finally, to run the tests to check against the server responses
 ```python
 python osm-test.py -i 10_vw_responses.csv -d 127.0.0.1:80
 ```
