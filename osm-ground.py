@@ -70,7 +70,7 @@ if __name__ == '__main__':
     pair_df['start'] = start
     pair_df['end'] = end
     pair_df['response'] = responses
-    pair_df['query'] = query
+    pair_df['query'] = queries
 
     # Append the city names to the start and end csvs
     pair_df['start_name'] = pair_df['start'].apply(
