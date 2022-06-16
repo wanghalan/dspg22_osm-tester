@@ -14,7 +14,7 @@ def random_pairs(obj_list):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description='Given input of city coordinates, append a distance column')
+        description='Given input of city coordinates, create a random number of pairs and query the server to generate the ground truth')
     parser.add_argument(
         '-i', '--input', help='a csv extracted by osm-coor-get script that contains the city coordinates', type=str, required=True)
     parser.add_argument('-n', '--number', type=int,
