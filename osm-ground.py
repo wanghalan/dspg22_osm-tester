@@ -36,18 +36,21 @@ if __name__ == '__main__':
 
     df = pd.read_csv(args.input)
     oracle = "https://router.project-osrm.org/route/v1/driving/{0};{1}?annotations=distance"
+    # oracle = "https://router.project-osrm.org/table/v1/car/{0};{1}"
 
     # convert the strinng in the coor column into objects using the function eval
     df['coor'] = df['coor'].map(eval)
     logging.debug(df['coor'])
 
-    # remove the paran around the object and convert it back to a string
-    df['coor'] = df['coor'].apply(lambda x: '%s,%s' % (x[0], x[1]))
+    # remove the paran around the object and convert it back to a string (in lon lat, instead of lat lon format!)
+    df['coor'] = df['coor'].apply(lambda x: '%s,%s' % (x[1], x[0]))
 
     # Get pairs for the given number limited by the total number of coordinates
     pairs = [random_pairs(df['coor'])
              for i in range(args.number)]
 
+    print(pairs)
+    # input()
     print(df)
     # For each pair, save the results
     responses = []
@@ -59,10 +62,10 @@ if __name__ == '__main__':
         query = oracle.format(coor[0], coor[1])
         logging.debug(query)
         queries.append(query)
-        r = requests.get(query)
         start.append(coor[0])
         end.append(coor[1])
-        responses.append(r.text)
+        r = requests.get(query)
+        responses.append(str(r.text))
         logging.debug(responses)
 
     # Append these results to the csv and save it to the output
@@ -79,6 +82,8 @@ if __name__ == '__main__':
         lambda x: df[df['coor'] == x]['name'].values[0])
 
     # Reordering the data frame
-    pair_df = pair_df[['start_name', 'start', 'end_name', 'end', 'query', 'response']]
+    pair_df = pair_df[['start_name', 'start',
+                       'end_name', 'end', 'query', 'response']]
     pair_df.to_csv(args.output, index=False)
+    # pair_df.to_excel(args.output, engine='xlsxwriter', index=False)
     logging.debug(pair_df)
