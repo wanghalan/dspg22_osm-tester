@@ -36,8 +36,7 @@ if __name__ == '__main__':
     local_server_query = "http://%s/route/v1/driving/{0};{1}?annotations=distance" % args.docker
     matches = 0
 
-    server_dists = []
-    local_dists = []
+    mad = []
     for index, row in df.iterrows():
         query = local_server_query.format(
             row['start'], row['end'])
@@ -54,13 +53,11 @@ if __name__ == '__main__':
         logging.debug('\tResponse from docker: %s' % distance)
         logging.debug('\tResponse from osrm server: %s' % osrm_server_dist)
         logging.debug('-' * 80)
-        print('[%s]\t(%.2f)\t(docker: %s,server: %s)\t%s to %s' % (match, mean_squared_error([osrm_server_dist], [distance]), distance, osrm_server_dist, row['start'], row['end']
+        print('[%s]\t(%.2f)\t(docker: %s,server: %s)\t%s to %s' % (match, abs(osrm_server_dist - distance), distance, osrm_server_dist, row['start'], row['end']
                                                                    ))
         logging.debug('=' * 80)
-        local_dists.append(distance)
-        server_dists.append(osrm_server_dist)
+        mad.append(abs(osrm_server_dist - distance))
     print()
     print('Total matches: %s/%s (%.2f)' %
           (matches, len(df), matches / len(df)))
-    print('Overall RMSE: %.2f' % mean_squared_error(
-        server_dists, local_dists))
+    print('Overall MAD: %.2f' % (sum(mad) / len(mad)))

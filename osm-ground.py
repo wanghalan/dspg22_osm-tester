@@ -34,6 +34,8 @@ if __name__ == '__main__':
     if not args.override:
         assert not os.path.isfile(args.output)
 
+    assert args.output.endswith('.csv') or args.output.endswith('.xlsx'), 'The file output must be a csv (.csv) or an excel (.xlsx) file'
+
     df = pd.read_csv(args.input)
     oracle = "https://router.project-osrm.org/route/v1/driving/{0};{1}?annotations=distance"
     # oracle = "https://router.project-osrm.org/table/v1/car/{0};{1}"
@@ -84,6 +86,9 @@ if __name__ == '__main__':
     # Reordering the data frame
     pair_df = pair_df[['start_name', 'start',
                        'end_name', 'end', 'query', 'response']]
-    pair_df.to_csv(args.output, index=False)
-    # pair_df.to_excel(args.output, engine='xlsxwriter', index=False)
+
+    if args.output.endswith('.csv'):
+        pair_df.to_csv(args.output, index=False)
+    elif args.output.endswith('.xlsx'):
+        pair_df.to_excel(args.output, engine='xlsxwriter', index=False)
     logging.debug(pair_df)
