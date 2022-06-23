@@ -3,7 +3,7 @@ If you are trying to merge [Open Street Map (OSM)](https://www.openstreetmap.org
 
 Quickstart
 ---
-To use, use the [overpass api](https://wiki.openstreetmap.org/wiki/Overpass_API) to download coordinates of specific cities to look at. For example, in our case, we look towards Virginia and West Virginia
+To start, we use the [overpass api](https://wiki.openstreetmap.org/wiki/Overpass_API) to download coordinates of specific cities to look at. For example, to get the coordinates for Virginia and West Virginia
 
 ```python
 python osm-coor-get.py -a Virginia "West Virginia" -o vw.csv
