@@ -1,6 +1,11 @@
 # dspg22_osm-tester
 If you are trying to merge [Open Street Map (OSM)](https://www.openstreetmap.org/#map=5/38.007/-95.844) data, how do you know that the merged files are working successfully?
 
+System Overview
+---
+![System Overview](https://raw.githubusercontent.com/yaoeh/dspg22_osm-tester/main/documentation/system-overview.png)
+
+
 Quickstart
 ---
 To start, we use the [overpass api](https://wiki.openstreetmap.org/wiki/Overpass_API) to download coordinates of specific cities to look at. For example, to get the coordinates for Virginia and West Virginia
