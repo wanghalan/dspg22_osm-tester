@@ -71,7 +71,7 @@ Finally, to run the tests to check against the server responses
 python osm-test.py -i 10_vw_responses.csv -d 127.0.0.1:80
 
 # If you haven't started your docker isntance, run something like this first: 
-# docker run -t -i -p 8000:5000 -v "${PWD}:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/<filename>.osrm, where 8000 would be the local port, and 5000 the docker port
+# docker run -t -i -p 80:5000 -v "${PWD}:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/<filename>.osrm, where 8000 would be the local port, and 5000 the docker port
 ```
 
 Which should return something like this
