@@ -92,7 +92,7 @@ Overall MAD: 13.04
 
 Misc
 ---
-How to merge osm files [gist](https://gist.github.com/yaoeh/859cefaea7b61046d084ead1b3d104a1)
+How to merge osm files [gist](https://gist.github.com/wanghalan/859cefaea7b61046d084ead1b3d104a1)
 
 Acknowledgement
 ---
